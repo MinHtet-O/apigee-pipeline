@@ -40,10 +40,10 @@ Variable definitions:
 '
 
 docker run -d -p 9001:8080 \
-	-e APIGEE_ORG=. \
-	-e APIGEE_USERNAME=. \
-	-e APIGEE_PASSWORD=. \
-	-e API_DOMAIN_TEST=. \
-	-e API_DOMAIN_PROD=. \
-	-e SCM_URL=. \
+	-e APIGEE_ORG=KBZBANK \
+	-e APIGEE_USERNAME=apigee.edge.admin@kbzbank.com \
+	-e APIGEE_PASSWORD=Apigee11 \
+	-e API_DOMAIN_TEST=10.203.1.14:9002 \
+	-e API_DOMAIN_PROD=10.203.1.13:9001 \
+	-e SCM_URL=https://github.com/MinHtet-O/apigee-pipeline \
 --name my-ci apigee/ci
