@@ -42,7 +42,7 @@
 			<properties>
 				<apigee.profile>test</apigee.profile>
 				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.hosturl>http://10.203.100.12:8080</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>${env.APIGEE_ORG}</apigee.org>
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
@@ -56,8 +56,8 @@
 			<id>prod</id>
 			<properties>
 				<apigee.profile>prod</apigee.profile>
-				<apigee.env>prod</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.env>uat</apigee.env>
+				<apigee.hosturl>http://10.203.100.12:8080</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
 				<apigee.org>${env.APIGEE_ORG}</apigee.org>
 				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
@@ -195,58 +195,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<executions>
-					<!-- npm install -->
-					<execution>
-						<id>npm-install</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>npm</executable>
-							<commandlineArgs>
-								install
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<!-- run unit tests -->
-					<execution>
-						<id>unit</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>./node_modules/mocha/bin/mocha</executable>
-							<commandlineArgs>
-								test/unit
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<!-- run integration tests -->
-					<execution>
-						<id>integration</id>
-						<phase>install</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>./node_modules/cucumber/bin/cucumber.js</executable>
-							<commandlineArgs>
-								target/test/integration/features --tags ${api.testtag}
-							</commandlineArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- cleaning dirs -->
+		<!-- cleaning dirs -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.5</version>

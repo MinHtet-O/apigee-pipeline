@@ -56,6 +56,6 @@
 
 	<HTTPProxyConnection>
 		<BasePath>/currency/v1</BasePath>
-		<VirtualHost>secure</VirtualHost>
+		<VirtualHost>test_vh</VirtualHost>
 	</HTTPProxyConnection>
 </ProxyEndpoint>
